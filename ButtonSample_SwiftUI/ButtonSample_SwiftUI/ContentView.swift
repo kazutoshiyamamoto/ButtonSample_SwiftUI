@@ -9,20 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    // 上部のボタンの選択状態を管理する変数
     @State var isTopButtonTapped = false
+    
+    // 下部のボタンの選択状態を管理する変数
     @State var isBottomButtonTapped = false
     
     var body: some View {
         VStack {
+            // インスタンス化する際に引数にisTopButtonTappedを指定したことで、
+            // 構造体SampleButtonの変数isTappedの状態と、isTopButtonTappedの状態が結びつく
+            // つまり、このインスタンスにおいてはisTappedがtrueになればisTopButtonTappedもtrueとなる
             SampleButton(isTapped: $isTopButtonTapped)
                 .padding()
             
+            // インスタンス化する際に引数にisBottomButtonTappedを指定したことで、
+            // 構造体SampleButtonの変数isTappedの状態と、isBottomButtonTappedの状態が結びつく
+            // つまり、このインスタンスにおいてはisTappedがtrueになればisBottomButtonTappedもtrueとなる
             SampleButton(isTapped: $isBottomButtonTapped)
         }
     }
 }
 
 struct SampleButton: View {
+    // @BindingをつけるとSampleButtonをインスタンス化する際にisTappedと結びつける変数を指定できる
     @Binding var isTapped: Bool
     
     var body: some View {
