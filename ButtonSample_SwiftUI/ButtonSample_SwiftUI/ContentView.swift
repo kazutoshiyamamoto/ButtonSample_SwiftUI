@@ -9,10 +9,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var buttonTitle = "Button Sample"
+    
     var body: some View {
         VStack {
-            Button(action: {}) {
-                Text("Button Sample")
+            Button(action: {
+                self.buttonTitle = "Button Tapped!"
+            }) {
+                Text("\(buttonTitle)")
                     .frame(width: 200, height: 70, alignment: .center)
                     .foregroundColor(Color.white)
                     .background(Color.blue)
