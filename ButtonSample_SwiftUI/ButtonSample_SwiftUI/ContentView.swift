@@ -9,31 +9,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var topButtonTitle = "Button Sample"
-    @State var bottomButtonTitle = "Button Sample"
+    @State var isTopButtonTapped = false
+    @State var isBottomButtonTapped = false
     
     var body: some View {
         VStack {
-            Button(action: {
-                self.topButtonTitle = "Button Tapped!"
-            }) {
-                Text("\(topButtonTitle)")
-                    .frame(width: 200, height: 70, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .background(Color.blue)
-                    .cornerRadius(10, antialiased: true)
-            }
-            .padding()
+            SampleButton(isTapped: $isTopButtonTapped)
+                .padding()
             
-            Button(action: {
-                self.bottomButtonTitle = "Button Tapped!"
-            }) {
-                Text("\(bottomButtonTitle)")
-                    .frame(width: 200, height: 70, alignment: .center)
-                    .foregroundColor(Color.white)
-                    .background(Color.blue)
-                    .cornerRadius(10, antialiased: true)
-            }
+            SampleButton(isTapped: $isBottomButtonTapped)
+        }
+    }
+}
+
+struct SampleButton: View {
+    @Binding var isTapped: Bool
+    
+    var body: some View {
+        Button(action: {
+            self.isTapped = true
+        }) {
+            Text(isTapped ? "Button tapped!" : "Button sample")
+                .frame(width: 200, height: 70, alignment: .center)
+                .foregroundColor(Color.white)
+                .background(Color.blue)
+                .cornerRadius(10, antialiased: true)
         }
     }
 }
