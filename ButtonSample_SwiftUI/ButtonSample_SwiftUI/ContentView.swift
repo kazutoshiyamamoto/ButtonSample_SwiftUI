@@ -10,7 +10,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Button(action: {}) {
+                Text("Button Sample")
+                    .frame(width: 200, height: 70, alignment: .center)
+                    .foregroundColor(Color.white)
+                    .background(Color.blue)
+                    .cornerRadius(10, antialiased: true)
+            }
+        }
     }
 }
 
